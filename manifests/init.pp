@@ -24,7 +24,7 @@ class question2answer ($question2answer_parent_path = '/var/www',
     }
 
     exec { "$exec_grant_name":
-       command => "chown -R ${apache2::apache2_user}:${apache2::apache2_user} $question2answer_home",
+       command => "/bin/chown -R ${apache2::apache2_user}:${apache2::apache2_user} $question2answer_home",
        refreshonly => true
     }
 
