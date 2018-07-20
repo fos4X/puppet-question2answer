@@ -17,11 +17,10 @@ class question2answer ($question2answer_parent_path = '/var/www',
     }
 
     git::clone { "$git_clone_name":
-       username => 'anybody',
-       password => 'anything',
-       url => "$question2answer_url",
-       path => "$question2answer_home",
-       notify => Exec["$exec_grant_name"]
+       source_url => "$question2answer_url",
+       destination_dir => "$question2answer_home",
+       notify => Exec["$exec_grant_name"],
+       branch => 'master',
     }
 
     exec { "$exec_grant_name":
