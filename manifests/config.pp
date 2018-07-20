@@ -13,13 +13,10 @@ define question2answer::config($virtualhost_name, $server_admin_mail,
         ssl_cert_key => "$ssl_cert_key",
     }
 
-    mysql::database { "$db_name": }
-
-    mysql::user { "$db_name-user-$db_user":
+    mysql::db { "$db_name":
         user => "$db_user",
         password => "$db_passwd",
-        database => "$db_name",
-        host => '%'
+        host => 'localhost',
     }
    
     file { "$question2answer::question2answer_home/qa-config.php":
